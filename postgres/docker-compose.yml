@@ -2,7 +2,7 @@ version: '3'
 
 services:
   db:
-    image: postgres:latest
+    image: postgres:13.2-alpine
     environment:
       POSTGRES_PASSWORD: tom123
       POSTGRES_USER: tom
