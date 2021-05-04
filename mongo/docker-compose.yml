@@ -2,7 +2,7 @@ version: '3'
 
 services:
   db:
-    image: mongo:latest
+    image: mongo:3.6.23-xenial
     environment:
       MONGO_INITDB_DATABASE: chatter-db
       MONGO_INITDB_ROOT_USERNAME: admin
