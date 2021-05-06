@@ -5,7 +5,7 @@ CREATE TABLE tokens (
     username TEXT NOT NULL UNIQUE,
     token TEXT NOT NULL,
     refresh_token TEXT NOT NULL,
-    updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+    updated_at TIMESTAMPTZ NOT NULL,
 
 	CONSTRAINT fk_username
 	FOREIGN KEY(username)
