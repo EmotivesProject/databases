@@ -4,8 +4,8 @@ CREATE TABLE likes (
     id SERIAL PRIMARY KEY,
 	post_id INT NOT NULL,
     username VARCHAR(128) NOT NULL,
-    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL,
-    updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL,
+    updated_at TIMESTAMPTZ NOT NULL,
     active BOOLEAN default false,
 
     CONSTRAINT fk_username_on_like
@@ -24,8 +24,8 @@ CREATE TABLE comments (
 	post_id INT NOT NULL,
     username VARCHAR(128) NOT NULL,
     message TEXT NOT NULL,
-    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL,
-    updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL,
+    updated_at TIMESTAMPTZ NOT NULL,
     active BOOLEAN default false,
 
     CONSTRAINT fk_username_on_comments
