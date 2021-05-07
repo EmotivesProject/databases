@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  provider:
+    image: redis:6.2.3-alpine
+    restart: unless-stopped
+    networks:
+      default:
+      emotives:
+        aliases:
+          - redis
+
+networks:
+  emotives:
+    external:
+      name: emotives
+  default:
