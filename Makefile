@@ -1,11 +1,11 @@
 .PHONY: test running
 
 test:
-	docker network create traefik || true
+	docker network create emotives || true
 	./scripts/start.sh
 	make running
 	./scripts/destroy.sh
-	docker network rm traefik
+	docker network rm emotives
 
 running:
 	./scripts/is_running.sh postgres_db_1 || exit 1
