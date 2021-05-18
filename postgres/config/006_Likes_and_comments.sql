@@ -36,3 +36,15 @@ CREATE TABLE comments (
     FOREIGN KEY(post_id)
     REFERENCES posts(id)
 );
+
+CREATE INDEX likes_id_idx ON likes(id);
+CREATE INDEX comments_id_idx ON comments(id);
+
+CREATE INDEX likes_id_post_idx ON likes(post_id);
+CREATE INDEX comments_post_id_idx ON comments(post_id);
+
+CREATE INDEX likes_username_idx ON likes(username);
+CREATE INDEX comments_username_idx ON comments(username);
+
+CREATE INDEX likes_updated_at_idx ON likes(updated_at);
+CREATE INDEX comments_updated_at_idx ON comments(updated_at);

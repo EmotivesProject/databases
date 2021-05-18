@@ -11,3 +11,5 @@ VALUES
 ('posts'),
 ('likes'),
 ('comments');
+
+CREATE INDEX event_look_up_last_inserted_idx ON event_look_up(last_inserted);
