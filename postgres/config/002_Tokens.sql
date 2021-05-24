@@ -11,3 +11,6 @@ CREATE TABLE tokens (
 	FOREIGN KEY(username)
 	REFERENCES users(username)
 );
+
+CREATE INDEX token_username_idx ON tokens(username);
+CREATE INDEX token_refresh_token_idx ON tokens(refresh_token);
