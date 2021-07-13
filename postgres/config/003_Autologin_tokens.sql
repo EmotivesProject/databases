@@ -2,7 +2,7 @@
 
 CREATE TABLE autologin_tokens (
     id SERIAL PRIMARY KEY,
-    username TEXT NOT NULL UNIQUE,
+    username TEXT NOT NULL,
     autologin_token TEXT NOT NULL,
 
 	CONSTRAINT fk_autologin_username
