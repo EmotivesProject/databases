@@ -19,4 +19,4 @@ networks:
   default:
 
 volumes:
-  redis-data
+  redis-data:
