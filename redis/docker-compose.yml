@@ -1,9 +1,11 @@
 version: '3'
 
 services:
-  provider:
+  db:
     image: redis:6.2.3-alpine
     restart: unless-stopped
+    volumes:
+        - redis-data:/data
     networks:
       default:
       emotives:
@@ -15,3 +17,6 @@ networks:
     external:
       name: emotives
   default:
+
+volumes:
+  redis-data:

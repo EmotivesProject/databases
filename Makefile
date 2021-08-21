@@ -10,4 +10,4 @@ test:
 running:
 	./scripts/is_running.sh postgres_db_1 || exit 1
 	./scripts/is_running.sh mongo_db_1 || exit 1
-	./scripts/is_running.sh redis_provider_1 || exit 1
+	./scripts/is_running.sh redis_db_1 || exit 1
