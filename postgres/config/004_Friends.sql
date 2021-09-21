@@ -1,19 +1,20 @@
 \c uacl_db;
 
-CREATE TABLE friends (
+CREATE TABLE followers (
     id SERIAL PRIMARY KEY,
     username VARCHAR(128) NOT NULL,
-    friend_username VARCHAR(128) NOT NULL,
-    active BOOLEAN NOT NULL DEFAULT TRUE,
-	updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+    follow_username VARCHAR(128) NOT NULL,
+	created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
 
     CONSTRAINT fk_username_on_username
     FOREIGN KEY(username)
     REFERENCES users(username),
 
-    CONSTRAINT fk_username_on_friend_username
-    FOREIGN KEY(friend_username)
+    CONSTRAINT fk_username_on_follow_username
+    FOREIGN KEY(follow_username)
     REFERENCES users(username)
+
+    CONSTRAINT followers_combo UNIQUE (username,follow_username)
 );
 
-CREATE INDEX friends_username_idx ON friends(username);
+CREATE INDEX followers_username_idx ON followers(username);
