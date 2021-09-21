@@ -12,7 +12,7 @@ CREATE TABLE followers (
 
     CONSTRAINT fk_username_on_follow_username
     FOREIGN KEY(follow_username)
-    REFERENCES users(username)
+    REFERENCES users(username),
 
     CONSTRAINT followers_combo UNIQUE (username,follow_username)
 );
