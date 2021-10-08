@@ -13,5 +13,4 @@ CREATE TABLE posts (
     REFERENCES users(username)
 );
 
-CREATE INDEX posts_id_idx ON posts(id);
 CREATE INDEX posts_updated_at_idx ON posts(updated_at);
