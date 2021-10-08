@@ -37,9 +37,6 @@ CREATE TABLE comments (
     REFERENCES posts(id)
 );
 
-CREATE INDEX likes_id_idx ON likes(id);
-CREATE INDEX comments_id_idx ON comments(id);
-
 CREATE INDEX likes_id_post_idx ON likes(post_id);
 CREATE INDEX comments_post_id_idx ON comments(post_id);
 
