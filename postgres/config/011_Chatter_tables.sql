@@ -3,7 +3,7 @@
 CREATE TABLE users (
 	id SERIAL PRIMARY KEY,
     username VARCHAR(128) NOT NULL UNIQUE,
-    group VARCHAR(56)
+    "group" VARCHAR(56)
 );
 
 CREATE TABLE tokens (
@@ -34,6 +34,8 @@ CREATE TABLE messages (
 );
 
 CREATE INDEX users_username_idx ON users(username);
+
+CREATE INDEX users_group_idx ON users("group");
 
 CREATE INDEX messages_username_from_idx ON messages(username_from);
 CREATE INDEX messages_username_to_idx ON messages(username_to);
