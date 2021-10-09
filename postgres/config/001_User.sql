@@ -6,7 +6,8 @@ CREATE TABLE users (
     username VARCHAR(128) NOT NULL UNIQUE,
     password VARCHAR(128) NOT NULL,
     created_at TIMESTAMPTZ NOT NULL,
-	updated_at TIMESTAMPTZ NOT NULL
+	updated_at TIMESTAMPTZ NOT NULL,
+    group VARCHAR(56)
 );
 
 CREATE INDEX users_username_idx ON users(username);
