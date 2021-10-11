@@ -9,7 +9,7 @@ CREATE TABLE users (
 CREATE TABLE tokens (
 	token TEXT PRIMARY KEY,
     username VARCHAR(128) NOT NULL,
-	expiration TIMESTAMPTZ NOT NULL,
+	expiration INTEGER NOT NULL,
 
     CONSTRAINT fk_token_username_on_users
     FOREIGN KEY(username)
