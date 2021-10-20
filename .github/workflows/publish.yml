@@ -24,15 +24,11 @@ jobs:
           docker push ghcr.io/tombowyerresearchproject/postgres_db:latest
       - name: Connect and start
         uses: appleboy/ssh-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
-          envs: GITHUB_TOKEN
           script: |
-            echo $GITHUB_TOKEN | docker login ghcr.io -u imthetom --password-stdin
             rm -R databases
             git clone git@github.com:TomBowyerResearchProject/databases.git
             cd databases
