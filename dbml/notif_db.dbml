@@ -1,0 +1,16 @@
+Table "notifications" {
+  "id" integer [not null, pk]
+  "username" "character varying(128)" [not null]
+  "type" "character varying(128)"
+  "title" text
+  "message" text
+  "link" text
+  "post_id" integer
+  "username_to" "character varying(128)"
+  "created_at" timestamp [not null]
+  "seen" boolean
+
+Indexes {
+  username [type: btree, name: "notifications_username_idx"]
+}
+}
