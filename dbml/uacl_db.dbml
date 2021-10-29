@@ -1,0 +1,36 @@
+Table "autologin_tokens" {
+  "id" integer [not null, pk]
+  "username" text [not null]
+  "autologin_token" text [not null]
+}
+
+Table "tokens" {
+  "id" integer [not null, pk]
+  "username" text [not null, UNIQUE]
+  "token" text [not null]
+  "refresh_token" text [not null]
+  "updated_at" timestamp [not null]
+
+Indexes {
+  refresh_token [type: btree, name: "token_refresh_token_idx"]
+  username [type: btree, name: "token_username_idx"]
+}
+}
+
+Table "users" {
+  "id" integer [not null, pk]
+  "name" "character varying(56)" [not null]
+  "username" "character varying(128)" [not null, UNIQUE]
+  "password" "character varying(128)" [not null]
+  "created_at" timestamp [not null]
+  "updated_at" timestamp [not null]
+  "user_group" "character varying(56)"
+
+Indexes {
+  username [type: btree, name: "users_username_idx"]
+}
+}
+
+Ref:"users"."username" < "autologin_tokens"."username"
+
+Ref:"users"."username" < "tokens"."username"

@@ -1,0 +1,64 @@
+Table "comments" {
+  "id" integer [not null, pk]
+  "post_id" integer [not null]
+  "username" "character varying(128)" [not null]
+  "message" text [not null]
+  "created_at" timestamp [not null]
+  "updated_at" timestamp [not null]
+  "active" boolean [default: false]
+
+Indexes {
+  post_id [type: btree, name: "comments_post_id_idx"]
+  updated_at [type: btree, name: "comments_updated_at_idx"]
+  username [type: btree, name: "comments_username_idx"]
+}
+}
+
+Table "likes" {
+  "id" integer [not null, pk]
+  "post_id" integer [not null]
+  "username" "character varying(128)" [not null]
+  "created_at" timestamp [not null]
+  "updated_at" timestamp [not null]
+  "active" boolean [default: false]
+
+Indexes {
+  post_id [type: btree, name: "likes_id_post_idx"]
+  updated_at [type: btree, name: "likes_updated_at_idx"]
+  username [type: btree, name: "likes_username_idx"]
+}
+}
+
+Table "posts" {
+  "id" integer [not null, pk]
+  "username" "character varying(128)" [not null]
+  "content" jsonb [not null]
+  "created_at" timestamp [not null]
+  "updated_at" timestamp [not null]
+  "active" boolean [default: false]
+
+Indexes {
+  updated_at [type: btree, name: "posts_updated_at_idx"]
+}
+}
+
+Table "users" {
+  "id" integer [not null]
+  "username" "character varying(128)" [not null]
+  "user_group" "character varying(56)"
+
+Indexes {
+  user_group [type: btree, name: "users_user_group_idx"]
+  username [type: btree, name: "users_username_idx"]
+}
+}
+
+Ref:"posts"."id" < "comments"."post_id"
+
+Ref:"posts"."id" < "likes"."post_id"
+
+Ref:"users"."username" < "comments"."username"
+
+Ref:"users"."username" < "likes"."username"
+
+Ref:"users"."username" < "posts"."username"

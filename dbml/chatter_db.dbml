@@ -1,0 +1,36 @@
+Table "messages" {
+  "id" integer [not null, pk]
+  "username_from" "character varying(128)" [not null]
+  "username_to" "character varying(128)" [not null]
+  "message" text
+  "image_path" text
+  "created_at" timestamp [not null]
+
+Indexes {
+  username_from [type: btree, name: "messages_username_from_idx"]
+  username_to [type: btree, name: "messages_username_to_idx"]
+}
+}
+
+Table "tokens" {
+  "token" text [not null, pk]
+  "username" "character varying(128)" [not null]
+  "expiration" timestamp [not null]
+}
+
+Table "users" {
+  "id" integer [not null, pk]
+  "username" "character varying(128)" [not null]
+  "user_group" "character varying(56)"
+
+Indexes {
+  user_group [type: btree, name: "users_user_group_idx"]
+  username [type: btree, name: "users_username_idx"]
+}
+}
+
+Ref:"users"."username" < "messages"."username_from"
+
+Ref:"users"."username" < "messages"."username_to"
+
+Ref:"users"."username" < "tokens"."username"
